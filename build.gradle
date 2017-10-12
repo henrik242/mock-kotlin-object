@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.51"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.1.51"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.1.51"
+}
+
+apply plugin: 'groovy'
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+        'org.jetbrains.kotlin:kotlin-stdlib-jre8:1.1.51',
+    )
+    testCompile (
+        'org.spockframework:spock-core:1.1-groovy-2.4',
+        'cglib:cglib-nodep:3.2.4'
+    )
+}
+
+compileKotlin.kotlinOptions.jvmTarget = "1.8"
+
+allOpen {
+    annotation("Open")
+}
