@@ -3,7 +3,7 @@ class Yo(var str: String) {
     companion object {
         @JvmStatic var log = MyLogger()
     }
-    fun doStuff() {
-        log.warn("stuff: $str")
+    fun doStuff() : String {
+        return log.warn("stuff: $str")
     }
 }

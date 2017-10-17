@@ -9,9 +9,10 @@ class YoTest extends Specification {
         someObj.log = loggerMock
 
       when:
-        someObj.doStuff()
+        def res = someObj.doStuff()
 
       then:
-        1 * loggerMock.warn("stuff: someString")
+        res == "foobar"
+        1 * loggerMock.warn("stuff: someString") >> "foobar"
     }
 }
